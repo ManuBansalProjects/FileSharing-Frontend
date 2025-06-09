@@ -234,3 +234,68 @@ button {
 .deleteButton{
   background-color: 'red';
 }
+
+
+/* responsive comments bar with mobile */
+.comment-sidebar {
+  flex: 1;
+  padding-left: 16px;
+  border-left: 1px solid #ccc;
+}
+
+/* Mobile only: hide sidebar by default and slide in */
+@media (max-width: 768px) {
+  .comment-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 90%;
+    max-width: 350px;
+    background: white;
+    padding: 16px;
+    border-left: none;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .comment-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mobile-comment-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    padding: 10px 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    display: block;
+  }
+
+  /* Hide the button on desktop */
+  .mobile-comment-btn.hide {
+    display: none;
+  }
+}
+
+/* On desktop, always show sidebar and hide button */
+@media (min-width: 769px) {
+  .mobile-comment-btn {
+    display: none;
+  }
+
+  .comment-sidebar {
+    position: static;
+    transform: none !important;
+    height: auto;
+    box-shadow: none;
+  }
+}
